@@ -18,6 +18,18 @@
   <wsdl:message name="IService_WriteGps_OutputMessage">
     <wsdl:part name="parameters" element="tns:WriteGpsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_UserExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserExist" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckDevice_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckDevice" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckDevice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckDeviceResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DoWork" message="tns:IService_DoWork_InputMessage" />
@@ -26,6 +38,14 @@
     <wsdl:operation name="WriteGps">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/WriteGps" message="tns:IService_WriteGps_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/WriteGpsResponse" message="tns:IService_WriteGps_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserExist" message="tns:IService_UserExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserExistResponse" message="tns:IService_UserExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckDevice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CheckDevice" message="tns:IService_CheckDevice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CheckDeviceResponse" message="tns:IService_CheckDevice_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -41,6 +61,24 @@
     </wsdl:operation>
     <wsdl:operation name="WriteGps">
       <soap:operation soapAction="http://tempuri.org/IService/WriteGps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserExist">
+      <soap:operation soapAction="http://tempuri.org/IService/UserExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckDevice">
+      <soap:operation soapAction="http://tempuri.org/IService/CheckDevice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

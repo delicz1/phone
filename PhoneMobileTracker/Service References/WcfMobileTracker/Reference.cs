@@ -27,6 +27,16 @@ namespace PhoneMobileTracker.WcfMobileTracker {
         System.IAsyncResult BeginWriteGps(string userName, string password, string imei, int time, float lat, float lng, System.AsyncCallback callback, object asyncState);
         
         int EndWriteGps(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/UserExist", ReplyAction="http://tempuri.org/IService/UserExistResponse")]
+        System.IAsyncResult BeginUserExist(string userName, string password, System.AsyncCallback callback, object asyncState);
+        
+        bool EndUserExist(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CheckDevice", ReplyAction="http://tempuri.org/IService/CheckDeviceResponse")]
+        System.IAsyncResult BeginCheckDevice(string userName, string password, string imei, System.AsyncCallback callback, object asyncState);
+        
+        bool EndCheckDevice(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -54,6 +64,44 @@ namespace PhoneMobileTracker.WcfMobileTracker {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserExistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UserExistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckDeviceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CheckDeviceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceClient : System.ServiceModel.ClientBase<PhoneMobileTracker.WcfMobileTracker.IService>, PhoneMobileTracker.WcfMobileTracker.IService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -67,6 +115,18 @@ namespace PhoneMobileTracker.WcfMobileTracker {
         private EndOperationDelegate onEndWriteGpsDelegate;
         
         private System.Threading.SendOrPostCallback onWriteGpsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUserExistDelegate;
+        
+        private EndOperationDelegate onEndUserExistDelegate;
+        
+        private System.Threading.SendOrPostCallback onUserExistCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCheckDeviceDelegate;
+        
+        private EndOperationDelegate onEndCheckDeviceDelegate;
+        
+        private System.Threading.SendOrPostCallback onCheckDeviceCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -124,6 +184,10 @@ namespace PhoneMobileTracker.WcfMobileTracker {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DoWorkCompleted;
         
         public event System.EventHandler<WriteGpsCompletedEventArgs> WriteGpsCompleted;
+        
+        public event System.EventHandler<UserExistCompletedEventArgs> UserExistCompleted;
+        
+        public event System.EventHandler<CheckDeviceCompletedEventArgs> CheckDeviceCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -228,6 +292,104 @@ namespace PhoneMobileTracker.WcfMobileTracker {
                         lng}, this.onEndWriteGpsDelegate, this.onWriteGpsCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PhoneMobileTracker.WcfMobileTracker.IService.BeginUserExist(string userName, string password, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUserExist(userName, password, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool PhoneMobileTracker.WcfMobileTracker.IService.EndUserExist(System.IAsyncResult result) {
+            return base.Channel.EndUserExist(result);
+        }
+        
+        private System.IAsyncResult OnBeginUserExist(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string userName = ((string)(inValues[0]));
+            string password = ((string)(inValues[1]));
+            return ((PhoneMobileTracker.WcfMobileTracker.IService)(this)).BeginUserExist(userName, password, callback, asyncState);
+        }
+        
+        private object[] OnEndUserExist(System.IAsyncResult result) {
+            bool retVal = ((PhoneMobileTracker.WcfMobileTracker.IService)(this)).EndUserExist(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUserExistCompleted(object state) {
+            if ((this.UserExistCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UserExistCompleted(this, new UserExistCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UserExistAsync(string userName, string password) {
+            this.UserExistAsync(userName, password, null);
+        }
+        
+        public void UserExistAsync(string userName, string password, object userState) {
+            if ((this.onBeginUserExistDelegate == null)) {
+                this.onBeginUserExistDelegate = new BeginOperationDelegate(this.OnBeginUserExist);
+            }
+            if ((this.onEndUserExistDelegate == null)) {
+                this.onEndUserExistDelegate = new EndOperationDelegate(this.OnEndUserExist);
+            }
+            if ((this.onUserExistCompletedDelegate == null)) {
+                this.onUserExistCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUserExistCompleted);
+            }
+            base.InvokeAsync(this.onBeginUserExistDelegate, new object[] {
+                        userName,
+                        password}, this.onEndUserExistDelegate, this.onUserExistCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PhoneMobileTracker.WcfMobileTracker.IService.BeginCheckDevice(string userName, string password, string imei, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCheckDevice(userName, password, imei, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool PhoneMobileTracker.WcfMobileTracker.IService.EndCheckDevice(System.IAsyncResult result) {
+            return base.Channel.EndCheckDevice(result);
+        }
+        
+        private System.IAsyncResult OnBeginCheckDevice(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string userName = ((string)(inValues[0]));
+            string password = ((string)(inValues[1]));
+            string imei = ((string)(inValues[2]));
+            return ((PhoneMobileTracker.WcfMobileTracker.IService)(this)).BeginCheckDevice(userName, password, imei, callback, asyncState);
+        }
+        
+        private object[] OnEndCheckDevice(System.IAsyncResult result) {
+            bool retVal = ((PhoneMobileTracker.WcfMobileTracker.IService)(this)).EndCheckDevice(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCheckDeviceCompleted(object state) {
+            if ((this.CheckDeviceCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CheckDeviceCompleted(this, new CheckDeviceCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CheckDeviceAsync(string userName, string password, string imei) {
+            this.CheckDeviceAsync(userName, password, imei, null);
+        }
+        
+        public void CheckDeviceAsync(string userName, string password, string imei, object userState) {
+            if ((this.onBeginCheckDeviceDelegate == null)) {
+                this.onBeginCheckDeviceDelegate = new BeginOperationDelegate(this.OnBeginCheckDevice);
+            }
+            if ((this.onEndCheckDeviceDelegate == null)) {
+                this.onEndCheckDeviceDelegate = new EndOperationDelegate(this.OnEndCheckDevice);
+            }
+            if ((this.onCheckDeviceCompletedDelegate == null)) {
+                this.onCheckDeviceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCheckDeviceCompleted);
+            }
+            base.InvokeAsync(this.onBeginCheckDeviceDelegate, new object[] {
+                        userName,
+                        password,
+                        imei}, this.onEndCheckDeviceDelegate, this.onCheckDeviceCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -330,6 +492,35 @@ namespace PhoneMobileTracker.WcfMobileTracker {
             public int EndWriteGps(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 int _result = ((int)(base.EndInvoke("WriteGps", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUserExist(string userName, string password, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = userName;
+                _args[1] = password;
+                System.IAsyncResult _result = base.BeginInvoke("UserExist", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndUserExist(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("UserExist", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCheckDevice(string userName, string password, string imei, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[3];
+                _args[0] = userName;
+                _args[1] = password;
+                _args[2] = imei;
+                System.IAsyncResult _result = base.BeginInvoke("CheckDevice", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndCheckDevice(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("CheckDevice", _args, result)));
                 return _result;
             }
         }
