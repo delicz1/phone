@@ -24,7 +24,7 @@ namespace PhoneMobileTracker.WcfMobileTracker {
         void EndDoWork(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/WriteGps", ReplyAction="http://tempuri.org/IService/WriteGpsResponse")]
-        System.IAsyncResult BeginWriteGps(string userName, string password, string imei, int time, float lat, float lng, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginWriteGps(string userName, string password, string imei, int time, double lat, double lng, System.AsyncCallback callback, object asyncState);
         
         int EndWriteGps(System.IAsyncResult result);
         
@@ -237,7 +237,7 @@ namespace PhoneMobileTracker.WcfMobileTracker {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PhoneMobileTracker.WcfMobileTracker.IService.BeginWriteGps(string userName, string password, string imei, int time, float lat, float lng, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult PhoneMobileTracker.WcfMobileTracker.IService.BeginWriteGps(string userName, string password, string imei, int time, double lat, double lng, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginWriteGps(userName, password, imei, time, lat, lng, callback, asyncState);
         }
         
@@ -251,8 +251,8 @@ namespace PhoneMobileTracker.WcfMobileTracker {
             string password = ((string)(inValues[1]));
             string imei = ((string)(inValues[2]));
             int time = ((int)(inValues[3]));
-            float lat = ((float)(inValues[4]));
-            float lng = ((float)(inValues[5]));
+            double lat = ((double)(inValues[4]));
+            double lng = ((double)(inValues[5]));
             return ((PhoneMobileTracker.WcfMobileTracker.IService)(this)).BeginWriteGps(userName, password, imei, time, lat, lng, callback, asyncState);
         }
         
@@ -269,11 +269,11 @@ namespace PhoneMobileTracker.WcfMobileTracker {
             }
         }
         
-        public void WriteGpsAsync(string userName, string password, string imei, int time, float lat, float lng) {
+        public void WriteGpsAsync(string userName, string password, string imei, int time, double lat, double lng) {
             this.WriteGpsAsync(userName, password, imei, time, lat, lng, null);
         }
         
-        public void WriteGpsAsync(string userName, string password, string imei, int time, float lat, float lng, object userState) {
+        public void WriteGpsAsync(string userName, string password, string imei, int time, double lat, double lng, object userState) {
             if ((this.onBeginWriteGpsDelegate == null)) {
                 this.onBeginWriteGpsDelegate = new BeginOperationDelegate(this.OnBeginWriteGps);
             }
@@ -477,7 +477,7 @@ namespace PhoneMobileTracker.WcfMobileTracker {
                 base.EndInvoke("DoWork", _args, result);
             }
             
-            public System.IAsyncResult BeginWriteGps(string userName, string password, string imei, int time, float lat, float lng, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginWriteGps(string userName, string password, string imei, int time, double lat, double lng, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[6];
                 _args[0] = userName;
                 _args[1] = password;

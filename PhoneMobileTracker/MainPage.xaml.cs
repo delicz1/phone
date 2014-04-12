@@ -51,11 +51,7 @@ namespace PhoneMobileTracker
 
         void client_WriteGpsCompleted(object sender, WcfMobileTracker.WriteGpsCompletedEventArgs e)
         {
-            Dispatcher.BeginInvoke(() =>
-                {
-                    string name = e.Result.ToString();
-                    MessageBox.Show(name);
-                });
+
         }
 
         void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
@@ -81,15 +77,15 @@ namespace PhoneMobileTracker
                     LongitudeTextBlock.Text = args.Position.Coordinate.Longitude.ToString("0.00");
                 });
             }
-            else
-            {
-                Microsoft.Phone.Shell.ShellToast toast = new Microsoft.Phone.Shell.ShellToast();
-                toast.Content = args.Position.Coordinate.Latitude.ToString("0.00");
-                toast.Title = "Location: ";
-                toast.NavigationUri = new Uri("/Page2.xaml", UriKind.Relative);
-                toast.Show();
+            //else
+            //{
+            //    Microsoft.Phone.Shell.ShellToast toast = new Microsoft.Phone.Shell.ShellToast();
+            //    toast.Content = args.Position.Coordinate.Latitude.ToString("0.00");
+            //    toast.Title = "Location: ";
+            //    toast.NavigationUri = new Uri("/Page2.xaml", UriKind.Relative);
+            //    toast.Show();
 
-            }
+            //}
         }
 
         private void InitAppBar() {

@@ -17,8 +17,8 @@
         <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="imei" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="time" type="xs:int" />
-        <xs:element minOccurs="0" name="lat" type="xs:float" />
-        <xs:element minOccurs="0" name="lng" type="xs:float" />
+        <xs:element minOccurs="0" name="lat" type="xs:double" />
+        <xs:element minOccurs="0" name="lng" type="xs:double" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
