@@ -153,6 +153,39 @@
     <value>Načítám</value>
   </data>
   <data name="TitleImei" xml:space="preserve">
-    <value>IMEI</value>
+    <value>Indentifikace zařízení (IMEI)</value>
+  </data>
+  <data name="ConnectionDevice" xml:space="preserve">
+    <value>Spárovat</value>
+  </data>
+  <data name="ConnectionDeviceError" xml:space="preserve">
+    <value>Při párování došlo k chybě! Zkontrolujte nastavení!</value>
+  </data>
+  <data name="ConnectionDeviceOn" xml:space="preserve">
+    <value>Spárování proběhlo úspěšně</value>
+  </data>
+  <data name="Lat" xml:space="preserve">
+    <value>Zeměpisná šířka</value>
+  </data>
+  <data name="Lng" xml:space="preserve">
+    <value>Zeměpisná délka</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Neplatné přihlašovací údaje</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Odhlásit</value>
+  </data>
+  <data name="ShortPassword" xml:space="preserve">
+    <value>Heslo je příliž krátké</value>
+  </data>
+  <data name="ShortUserName" xml:space="preserve">
+    <value>Uživatelské jméno je příliž krátké</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
   </data>
 </root>

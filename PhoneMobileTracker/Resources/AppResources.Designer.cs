@@ -97,11 +97,74 @@ namespace PhoneMobileTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spárovat.
+        /// </summary>
+        public static string ConnectionDevice {
+            get {
+                return ResourceManager.GetString("ConnectionDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Při párování došlo k chybě! Zkontrolujte nastavení!.
+        /// </summary>
+        public static string ConnectionDeviceError {
+            get {
+                return ResourceManager.GetString("ConnectionDeviceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spárování proběhlo úspěšně.
+        /// </summary>
+        public static string ConnectionDeviceOn {
+            get {
+                return ResourceManager.GetString("ConnectionDeviceOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zeměpisná šířka.
+        /// </summary>
+        public static string Lat {
+            get {
+                return ResourceManager.GetString("Lat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zeměpisná délka.
+        /// </summary>
+        public static string Lng {
+            get {
+                return ResourceManager.GetString("Lng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatné přihlašovací údaje.
+        /// </summary>
+        public static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Přihlášení.
         /// </summary>
         public static string LoginPage {
             get {
                 return ResourceManager.GetString("LoginPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odhlásit.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
@@ -133,7 +196,43 @@ namespace PhoneMobileTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IMEI.
+        ///   Looks up a localized string similar to Heslo je příliž krátké.
+        /// </summary>
+        public static string ShortPassword {
+            get {
+                return ResourceManager.GetString("ShortPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uživatelské jméno je příliž krátké.
+        /// </summary>
+        public static string ShortUserName {
+            get {
+                return ResourceManager.GetString("ShortUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string Stop {
+            get {
+                return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indentifikace zařízení (IMEI).
         /// </summary>
         public static string TitleImei {
             get {

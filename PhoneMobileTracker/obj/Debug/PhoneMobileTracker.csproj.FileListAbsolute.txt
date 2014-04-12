@@ -38,3 +38,23 @@ C:\Users\Jan\Documents\Visual Studio 2013\Projects\DeliDimplomka\phone\PhoneMobi
 C:\Users\Jan\Documents\Visual Studio 2013\Projects\DeliDimplomka\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.dll
 C:\Users\Jan\Documents\Visual Studio 2013\Projects\DeliDimplomka\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.pdb
 C:\Users\Jan\Documents\Visual Studio 2013\Projects\DeliDimplomka\phone\PhoneMobileTracker\obj\Debug\XapCacheFile.xml
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\ApplicationIcon.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\IconicTileSmall.png
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\PhoneMobileTracker.dll
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\PhoneMobileTracker.pdb
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\AppManifest.xaml
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Properties\WMAppManifest.xml
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\PhoneMobileTracker_Debug_AnyCPU.xap
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\App.g.cs
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\LoginPage.g.cs
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\MainPage.g.cs
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.g.resources
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.Resources.AppResources.resources
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.csproj.GenerateResource.Cache
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.dll
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.pdb
+C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\XapCacheFile.xml

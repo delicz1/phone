@@ -37,20 +37,25 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
-                <TextBlock x:Name="UnixTimeTextBlock" Text="unix time"/>
-                <TextBlock x:Name="LatitudeTextBlock" Text="latitude"/>
-                <TextBlock x:Name="LongitudeTextBlock" Text="longitude"/>
+            <StackPanel Grid.Row="3" Grid.Column="0">
+                <TextBlock Text="{Binding LocalizedResources.Lat, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Text="{Binding LocalizedResources.Lng, Source={StaticResource LocalizedStrings}}" />
             </StackPanel>
-
+            <StackPanel Grid.Row="3" Grid.Column="1">
+                <TextBlock x:Name="LatitudeTextBlock" Text="-"/>
+                <TextBlock x:Name="LongitudeTextBlock" Text="-"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
+                <TextBlock x:Name="AddressTextBlock" Text=""/>
+            </StackPanel>
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding LocalizedResources.TitleImei, Source={StaticResource LocalizedStrings}}"/>
             <TextBox x:Name="Imei" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Button x:Name="BtnImei" Content="Sparovat" Grid.Row="2" Grid.ColumnSpan="2" Click="BtnImei_Click"/>
-            <Button x:Name="BtnStart" Content="Start" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Button x:Name="BtnStop" Content="Stop" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" />
+            <Button x:Name="BtnImei" Content="{Binding LocalizedResources.ConnectionDevice, Source={StaticResource LocalizedStrings}}" Grid.Row="2" Grid.ColumnSpan="2" Click="BtnImei_Click"/>
+            <Button x:Name="BtnStart" Content="{Binding LocalizedResources.Start, Source={StaticResource LocalizedStrings}}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom" Click="BtnStart_Click"/>
+            <Button x:Name="BtnStop" Content="{Binding LocalizedResources.Stop, Source={StaticResource LocalizedStrings}}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" Click="BtnStop_Click" />
         </Grid>
     </Grid>
 

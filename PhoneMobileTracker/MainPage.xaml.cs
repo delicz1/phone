@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using Windows.Devices.Geolocation;
-using System.Globalization;
-using System.IO.IsolatedStorage;
+﻿using Microsoft.Phone.Shell;
 using PhoneMobileTracker.Resources;
+using System;
+using System.IO.IsolatedStorage;
+using System.Windows;
+using System.Windows.Navigation;
+using Windows.Devices.Geolocation;
 
 namespace PhoneMobileTracker
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage
     {
         public MainPage()
         {
@@ -25,15 +19,18 @@ namespace PhoneMobileTracker
 
         void MainPage_Loaded(object sender, RoutedEventArgs e) {
             InitAppBar();
-            if( IsolatedStorageSettings.ApplicationSettings.Contains(AppSetting.PREF_IMEI)) {
-                Imei.Text = IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_IMEI].ToString();
+            var appSetting = IsolatedStorageSettings.ApplicationSettings;
+            if (appSetting.Contains(AppSetting.PREF_IMEI))
+            {
+                Imei.Text = appSetting[AppSetting.PREF_IMEI].ToString();
             }
+            EnableDisableStartStopBtn();
+
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            NavigationService.RemoveBackEntry();  
-
+            NavigationService.RemoveBackEntry();
             if (App.Geolocator == null)
             {
                 App.Geolocator = new Geolocator();
@@ -43,7 +40,7 @@ namespace PhoneMobileTracker
             }
         }
 
-        protected override void OnRemovedFromJournal(System.Windows.Navigation.JournalEntryRemovedEventArgs e)
+        protected override void OnRemovedFromJournal(JournalEntryRemovedEventArgs e)
         {
             App.Geolocator.PositionChanged -= geolocator_PositionChanged;
             App.Geolocator = null;
@@ -51,11 +48,24 @@ namespace PhoneMobileTracker
 
         void client_WriteGpsCompleted(object sender, WcfMobileTracker.WriteGpsCompletedEventArgs e)
         {
+        }
 
+        private string GetAppSettingString(string key)
+        {
+            string result = "";
+            if (IsolatedStorageSettings.ApplicationSettings.Contains(key))
+            {
+                result = IsolatedStorageSettings.ApplicationSettings[key].ToString();
+            }
+            return result;
         }
 
         void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
+            string userName = GetAppSettingString(AppSetting.PREF_USER_NAME);
+            string password = GetAppSettingString(AppSetting.PREF_USER_PASSWORD);
+            string imei = GetAppSettingString(AppSetting.PREF_IMEI);
+
             string latString = args.Position.Coordinate.Latitude.ToString("0.000000");
             string lngString = args.Position.Coordinate.Longitude.ToString("0.000000");
             double lat = double.Parse(latString);
@@ -63,19 +73,31 @@ namespace PhoneMobileTracker
 
             DateTime dateTime = DateTime.UtcNow;
             int timestamp = (int) (dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
-            WcfMobileTracker.ServiceClient client = new WcfMobileTracker.ServiceClient();
-            client.WriteGpsAsync("admin", "123456", "123456", (int)timestamp, lat, lng);
-            client.WriteGpsCompleted += new EventHandler<WcfMobileTracker.WriteGpsCompletedEventArgs>(client_WriteGpsCompleted);
+            var client = new WcfMobileTracker.ServiceClient();
+            client.WriteGpsAsync(userName, password, imei, timestamp, lat, lng);
+            client.WriteGpsCompleted += client_WriteGpsCompleted;
             client.CloseAsync();
 
             if (!App.RunningInBackground)
             {
                 Dispatcher.BeginInvoke(() =>
                 {
-                    UnixTimeTextBlock.Text = timestamp.ToString();
                     LatitudeTextBlock.Text = args.Position.Coordinate.Latitude.ToString("0.00");
                     LongitudeTextBlock.Text = args.Position.Coordinate.Longitude.ToString("0.00");
                 });
+
+//                var query = new ReverseGeocodeQuery();
+//                query.GeoCoordinate = new GeoCoordinate(lat, lng);
+//                query.QueryCompleted += (s, e) =>
+//                {
+//                    if (e.Error != null)
+//                        return;
+//                    Dispatcher.BeginInvoke(() =>
+//                    {
+//                        AddressTextBlock.Text = e.Result[0].Information.Address.ToString();
+//                    });
+//                };
+//                query.QueryAsync();
             }
             //else
             //{
@@ -84,31 +106,51 @@ namespace PhoneMobileTracker
             //    toast.Title = "Location: ";
             //    toast.NavigationUri = new Uri("/Page2.xaml", UriKind.Relative);
             //    toast.Show();
-
             //}
         }
 
-        private void InitAppBar() {
-            ApplicationBarIconButton btn = new ApplicationBarIconButton();
+        private void StartTracking()
+        {
+            if (App.Geolocator == null)
+            {
+                App.Geolocator = new Geolocator();
+                App.Geolocator.DesiredAccuracy = PositionAccuracy.High;
+                App.Geolocator.MovementThreshold = 100; // The units are meters.
+                App.Geolocator.PositionChanged += geolocator_PositionChanged;
+            }
+        }
+
+        private void StopTracking()
+        {
+            App.Geolocator.PositionChanged -= geolocator_PositionChanged;
+            App.Geolocator = null;
+        }
+
+        private void InitAppBar() 
+        {
+            var btn = new ApplicationBarIconButton();
             btn.IconUri = new Uri("/Assets/Bar/logout.png", UriKind.Relative);
-            btn.Text = "Odhlasit";
+            btn.Text = AppResources.Logout;
             btn.Click += btnLogOut_Click;
 
             ApplicationBar.Buttons.Add(btn);
         }
 
-        void btnLogOut_Click(object sender, EventArgs e) {
+        void btnLogOut_Click(object sender, EventArgs e) 
+        {
             IsolatedStorageSettings.ApplicationSettings.Remove(AppSetting.PREF_USER_NAME);
             IsolatedStorageSettings.ApplicationSettings.Remove(AppSetting.PREF_USER_PASSWORD);
             NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
         }
 
-        private void DeviceConnect(string imei) {
+        private void DeviceConnect(string imei) 
+        {
             BtnImei.IsEnabled = false;
             string userName = IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_USER_NAME].ToString();
             string password = IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_USER_PASSWORD].ToString();
 
-            ProgressIndicator progress = new ProgressIndicator {
+            var progress = new ProgressIndicator 
+            {
                 IsVisible = true,
                 IsIndeterminate = true,
                 Text = AppResources.TitleLoading
@@ -116,26 +158,67 @@ namespace PhoneMobileTracker
 
             SystemTray.SetProgressIndicator(this, progress);
 
-            WcfMobileTracker.ServiceClient client = new WcfMobileTracker.ServiceClient();
+            var client = new WcfMobileTracker.ServiceClient();
             client.CheckDeviceAsync(userName, password, imei);
             client.CheckDeviceCompleted += client_CheckDeviceCompleted;
             client.CloseAsync();
         }
 
-        void client_CheckDeviceCompleted(object sender, WcfMobileTracker.CheckDeviceCompletedEventArgs e) {
+        void client_CheckDeviceCompleted(object sender, WcfMobileTracker.CheckDeviceCompletedEventArgs e) 
+        {
             BtnImei.IsEnabled = true;
             SystemTray.SetProgressIndicator(this, null);
 
-            if ((bool)e.Result) {
-                MessageBox.Show("Zarizeni bylo uspesne sparovano");
-                IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_IMEI] = Imei;
-            } else {
-                MessageBox.Show("Zarizeni nebylo sparovano");
+            if (e.Result) 
+            {
+                MessageBox.Show(AppResources.ConnectionDeviceOn);
+                IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_IMEI] = Imei.Text;
+            } else
+            {
+                MessageBox.Show(AppResources.ConnectionDeviceError);
             }
         }
 
-        private void BtnImei_Click(object sender, RoutedEventArgs e) {
+        private void EnableDisableStartStopBtn()
+        {
+            var appSetting = IsolatedStorageSettings.ApplicationSettings;
+            if (appSetting.Contains(AppSetting.PREF_TRACKING) && appSetting[AppSetting.PREF_TRACKING].ToString() == "1")
+            {
+                StartTracking();
+                BtnStart.IsEnabled = false;
+                BtnStop.IsEnabled = true;
+            }
+            else
+            {
+                StopTracking();
+                LatitudeTextBlock.Text = "-";
+                LongitudeTextBlock.Text = "-";
+                BtnStart.IsEnabled = true;
+                BtnStop.IsEnabled = false;
+            }
+
+        }
+
+        private void BtnImei_Click(object sender, RoutedEventArgs e) 
+        {
+            SetStartStop("0");
             DeviceConnect(Imei.Text);
+        }
+
+        private void SetStartStop(string status)
+        {
+            IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_TRACKING] = status;
+            EnableDisableStartStopBtn();
+        }
+
+        private void BtnStart_Click(object sender, RoutedEventArgs e)
+        {
+            SetStartStop("1");
+        }
+
+        private void BtnStop_Click(object sender, RoutedEventArgs e)
+        {
+            SetStartStop("0");
         }
     }
 }

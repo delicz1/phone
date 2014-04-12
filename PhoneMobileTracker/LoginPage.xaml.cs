@@ -26,7 +26,7 @@ namespace PhoneMobileTracker
                     IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_USER_PASSWORD].ToString());
             }
         }
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
             NavigationService.RemoveBackEntry();
         }
 
@@ -35,7 +35,7 @@ namespace PhoneMobileTracker
 
             LoginBtn.IsEnabled = false;
 
-            ProgressIndicator progress = new ProgressIndicator {
+            var progress = new ProgressIndicator {
                 IsVisible = true,
                 IsIndeterminate = true,
                 Text = AppResources.TitleLoading
@@ -43,9 +43,9 @@ namespace PhoneMobileTracker
 
             SystemTray.SetProgressIndicator(this, progress);
 
-            WcfMobileTracker.ServiceClient client = new WcfMobileTracker.ServiceClient();
+            var client = new WcfMobileTracker.ServiceClient();
             client.UserExistAsync(userName, userPass);
-            client.UserExistCompleted += new EventHandler<WcfMobileTracker.UserExistCompletedEventArgs>(userExist_response);
+            client.UserExistCompleted += userExist_response;
             client.CloseAsync();
         }
 
@@ -54,14 +54,14 @@ namespace PhoneMobileTracker
             string userName = UserName.Text;
             string userPass = UserPassword.Password;
 
-            if(userName.Count() < 5) {
-                error = "Prihlasovaci jmeno je prilis kratke.";
+            if(userName.Count() < 4) {
+                error = AppResources.ShortUserName;
             }
             if(userPass.Count() < 5) {
-                error = " Heslo je prilis kratke";
+                error = AppResources.ShortPassword;
             }
 
-            if(error.Count() == 0) {
+            if(!error.Any()) {
                 IsolatedStorageSettings.ApplicationSettings[AppSetting.PREF_USER_NAME] = userName;
                 IsolatedStorageSettings.ApplicationSettings.Add(AppSetting.PREF_USER_PASSWORD, userPass);
                 Login(userName, userPass);
@@ -72,7 +72,7 @@ namespace PhoneMobileTracker
         }
 
         private void userExist_response(object sender, WcfMobileTracker.UserExistCompletedEventArgs e) {
-            if ((bool) e.Result) {
+            if (e.Result) {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             } else {
                 if (IsolatedStorageSettings.ApplicationSettings.Contains(AppSetting.PREF_USER_NAME)) {
@@ -82,7 +82,7 @@ namespace PhoneMobileTracker
                 }
                 LoginBtn.IsEnabled = true;
                 SystemTray.SetProgressIndicator(this, null);
-                MessageBox.Show("Neplatne prihlasovaci udaje");
+                MessageBox.Show(AppResources.LoginError);
             }
         }
     }
