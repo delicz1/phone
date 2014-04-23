@@ -1,20 +1,14 @@
-﻿<xapCache source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\PhoneMobileTracker_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="12. 4. 2014 21:23:52">
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.dll" archivePath="PhoneMobileTracker.dll" lastWriteTime="12. 4. 2014 21:23:51" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Bar\logout.png" archivePath="Assets\Bar\logout.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="12. 4. 2014 18:31:01" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="12. 4. 2014 19:06:53" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="12. 4. 2014 18:31:00" />
-  <file source="C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="12. 4. 2014 18:31:01" />
+﻿<xapCache source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\PhoneMobileTracker_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="17. 4. 2014 20:12:50">
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.dll" archivePath="PhoneMobileTracker.dll" lastWriteTime="17. 4. 2014 20:12:49" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Bar\logout.png" archivePath="Assets\Bar\logout.png" lastWriteTime="12. 4. 2014 13:37:01" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="10. 4. 2014 23:39:49" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="8. 4. 2014 16:33:56" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="8. 4. 2014 16:33:31" />
+  <file source="C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="12. 4. 2014 13:37:01" />
 </xapCache>

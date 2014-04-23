@@ -72,7 +72,7 @@ namespace PhoneMobileTracker
             double lng = double.Parse(lngString);
 
             DateTime dateTime = DateTime.UtcNow;
-            int timestamp = (int) (dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
+            int timestamp = (int) (dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
             var client = new WcfMobileTracker.ServiceClient();
             client.WriteGpsAsync(userName, password, imei, timestamp, lat, lng);
             client.WriteGpsCompleted += client_WriteGpsCompleted;
@@ -122,8 +122,11 @@ namespace PhoneMobileTracker
 
         private void StopTracking()
         {
-            App.Geolocator.PositionChanged -= geolocator_PositionChanged;
-            App.Geolocator = null;
+            if (App.Geolocator != null)
+            {
+                App.Geolocator.PositionChanged -= geolocator_PositionChanged;
+                App.Geolocator = null;
+            }
         }
 
         private void InitAppBar() 
