@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:43691/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:43691/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_WriteGps_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteGps" />
+  </wsdl:message>
+  <wsdl:message name="IService_WriteGps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteGpsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserExist" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckDevice_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckDevice" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckDevice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeviceJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeviceJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeviceJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeviceJsonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DoWork" message="tns:IService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DoWorkResponse" message="tns:IService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteGps">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/WriteGps" message="tns:IService_WriteGps_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/WriteGpsResponse" message="tns:IService_WriteGps_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserExist" message="tns:IService_UserExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserExistResponse" message="tns:IService_UserExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckDevice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CheckDevice" message="tns:IService_CheckDevice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CheckDeviceResponse" message="tns:IService_CheckDevice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeviceJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeviceJson" message="tns:IService_DeviceJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeviceJsonResponse" message="tns:IService_DeviceJson_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="Service" />
+</wsdl:definitions>
