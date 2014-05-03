@@ -20,8 +20,6 @@ namespace PhoneMobileTracker
         public static PhoneApplicationFrame RootFrame { get; private set; }
         public static Geolocator Geolocator { get; set; }
 
-        public static WcfMobileTracker.ServiceClient WcfMobileTracker { get; set; }
-
         public static bool RunningInBackground { get; set; }
 
         /// <summary>

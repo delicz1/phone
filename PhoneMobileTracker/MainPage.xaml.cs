@@ -46,9 +46,9 @@ namespace PhoneMobileTracker
             App.Geolocator = null;
         }
 
-        void client_WriteGpsCompleted(object sender, WcfMobileTracker.WriteGpsCompletedEventArgs e)
-        {
-        }
+        //void client_WriteGpsCompleted(object sender, WcfMobileTracker.WriteGpsCompletedEventArgs e)
+        //{
+        //}
 
         private string GetAppSettingString(string key)
         {
@@ -73,17 +73,16 @@ namespace PhoneMobileTracker
 
             DateTime dateTime = DateTime.UtcNow;
             int timestamp = (int) (dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
-            var client = new WcfMobileTracker.ServiceClient();
-            client.WriteGpsAsync(userName, password, imei, timestamp, lat, lng);
-            client.WriteGpsCompleted += client_WriteGpsCompleted;
-            client.CloseAsync();
+            //var client = new WcfMobileTracker.ServiceClient();
+            //client.WriteGpsAsync(userName, password, imei, timestamp, lat, lng);
+            //client.WriteGpsCompleted += client_WriteGpsCompleted;
 
             if (!App.RunningInBackground)
             {
                 Dispatcher.BeginInvoke(() =>
                 {
-                    LatitudeTextBlock.Text = args.Position.Coordinate.Latitude.ToString("0.00");
-                    LongitudeTextBlock.Text = args.Position.Coordinate.Longitude.ToString("0.00");
+                    LatitudeTextBlock.Text = latString;
+                    LongitudeTextBlock.Text = lngString;
                 });
 
 //                var query = new ReverseGeocodeQuery();
@@ -160,13 +159,15 @@ namespace PhoneMobileTracker
             };
 
             SystemTray.SetProgressIndicator(this, progress);
-
+            /*
             var client = new WcfMobileTracker.ServiceClient();
             client.CheckDeviceAsync(userName, password, imei);
             client.CheckDeviceCompleted += client_CheckDeviceCompleted;
             client.CloseAsync();
+             */ 
         }
 
+        /*
         void client_CheckDeviceCompleted(object sender, WcfMobileTracker.CheckDeviceCompletedEventArgs e) 
         {
             BtnImei.IsEnabled = true;
@@ -180,8 +181,9 @@ namespace PhoneMobileTracker
             {
                 MessageBox.Show(AppResources.ConnectionDeviceError);
             }
-        }
+        }*/
 
+         
         private void EnableDisableStartStopBtn()
         {
             var appSetting = IsolatedStorageSettings.ApplicationSettings;

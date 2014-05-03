@@ -58,3 +58,6 @@ C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTra
 C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.dll
 C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.pdb
 C:\Users\Deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\XapCacheFile.xml
+C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\Bin\Debug\Newtonsoft.Json.xml
+C:\Users\deli\Documents\GitHub\phone\PhoneMobileTracker\obj\Debug\PhoneMobileTracker.csprojResolveAssemblyReference.cache

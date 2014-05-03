@@ -9,6 +9,11 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.IO.IsolatedStorage;
 using PhoneMobileTracker.Resources;
+using System.IO;
+using System.Text;
+using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
+
 
 namespace PhoneMobileTracker
 {
@@ -42,11 +47,44 @@ namespace PhoneMobileTracker
             };
 
             SystemTray.SetProgressIndicator(this, progress);
-
+            var uri = AppSetting.PREF_WCF_URL + AppSetting.PREF_WCF_USER_EXIST + userName + "/" + userPass;
+            var client = new WebClient();
+            client.DownloadStringCompleted += client_DownloadStringCompleted;
+            client.DownloadStringAsync(new Uri(uri));
+            /**
             var client = new WcfMobileTracker.ServiceClient();
             client.UserExistAsync(userName, userPass);
             client.UserExistCompleted += userExist_response;
             client.CloseAsync();
+             */ 
+        }
+
+        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (!e.Cancelled && e.Error == null)
+            {
+                var data = JsonConvert.DeserializeObject<Dictionary<string, bool>>((string)e.Result);
+                if (data["UserExistResult"])
+                {
+                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    if (IsolatedStorageSettings.ApplicationSettings.Contains(AppSetting.PREF_USER_NAME))
+                    {
+                        IsolatedStorageSettings.ApplicationSettings.Remove(AppSetting.PREF_USER_NAME);
+                        IsolatedStorageSettings.ApplicationSettings.Remove(AppSetting.PREF_USER_NAME);
+                        IsolatedStorageSettings.ApplicationSettings.Remove(AppSetting.PREF_USER_PASSWORD);
+                    }
+                    LoginBtn.IsEnabled = true;
+                    SystemTray.SetProgressIndicator(this, null);
+                    MessageBox.Show(AppResources.LoginError);
+                }
+            }
+            else
+            {
+                MessageBox.Show(e.Error.ToString());
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -71,7 +109,7 @@ namespace PhoneMobileTracker
 
         }
 
-        private void userExist_response(object sender, WcfMobileTracker.UserExistCompletedEventArgs e) {
+        /*private void userExist_response(object sender, WcfMobileTracker.UserExistCompletedEventArgs e) {
             if (e.Result) {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             } else {
@@ -84,6 +122,6 @@ namespace PhoneMobileTracker
                 SystemTray.SetProgressIndicator(this, null);
                 MessageBox.Show(AppResources.LoginError);
             }
-        }
+        }*/
     }
 }
